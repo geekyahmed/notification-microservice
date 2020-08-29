@@ -6,4 +6,6 @@ router.get('/posts', postController.getPosts)
 
 router.post('/new', postController.createPost)
 
+router.put('/edit/:id', postController.updatePost)
+
 module.exports = router

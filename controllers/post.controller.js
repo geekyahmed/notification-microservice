@@ -28,5 +28,27 @@ module.exports = {
       createNotification(savedPost, `${savedPost.title} have been created`)
       res.status(200).json(savedPost)
     })
+  },
+  updatePost: async (req, res) => {
+    const { title, content, isPublished } = req.body
+    const id = req.params.id
+    await Post.findById(id)
+      .then(singlePost => {
+        ;(singlePost.title = title), (singlePost.content = content)
+        singlePost.isPublished = isPublished
+
+        singlePost.save().then(updatedPost => {
+          createNotification(
+            updatedPost,
+            `${updatedPost.title} have been updated`
+          )
+          res.status(200).json(updatedPost)
+        })
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ msg: 'Internal Server Error', error: err.message })
+      })
   }
 }
