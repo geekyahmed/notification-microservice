@@ -6,17 +6,9 @@ const NotificationSchema = new Schema({
     type: String,
     required: true
   },
-  senderId: {
-      type: Schema.Types.ObjectId,
-      ref: 'post'
-  },
-  receiverId: {
-      type: Schema.Types.ObjectId,
-      ref: 'post'
-  },
-  seen: {
-    type: Boolean,
-    default: true
+  data: {
+    type: Schema.Types.ObjectId,
+    ref: 'post'
   },
   date: {
     type: Date,
