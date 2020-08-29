@@ -39,6 +39,10 @@ const PostSchema = new Schema({
   }
 })
 
+PostSchema.pre('save', async next => {
+  this.slug = this.title.split(' ').join('-')
+})
+
 const Post = mongoose.model('post', PostSchema)
 
 module.exports = Post

@@ -16,5 +16,13 @@ module.exports = {
           .status(500)
           .json({ msg: 'Internal Server Error', error: err.message })
       })
-  }
+    },
+    createPost: async (req, res) => {
+        const {title, content, isPublished} = req.body
+        const newPost = new Post({
+            title: title,
+            content: content,
+            isPublished: isPublished
+        })
+    }
 }
