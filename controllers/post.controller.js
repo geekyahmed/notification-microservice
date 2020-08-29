@@ -5,7 +5,11 @@ module.exports = {
   getPosts: async (req, res) => {
     await Post.find({ isPublished: true })
       .then(posts => {
-        res.status(200).json(posts)
+        if (posts == 0) {
+          res.status(200).json({ msg: 'No Posts Available' })
+        } else {
+          res.status(200).json(posts)
+        }
       })
       .catch(err => {
         res
