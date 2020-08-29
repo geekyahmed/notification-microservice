@@ -6,10 +6,6 @@ const PostSchema = new Schema({
     type: String,
     required: true
   },
-  slug: {
-    type: String,
-    required: true
-  },
   content: {
     type: String,
     required: true
@@ -37,10 +33,6 @@ const PostSchema = new Schema({
     type: Date,
     default: Date.now()
   }
-})
-
-PostSchema.pre('save', async next => {
-  this.slug = this.title.split(' ').join('-')
 })
 
 const Post = mongoose.model('post', PostSchema)

@@ -1,5 +1,5 @@
 const Post = require('../models/post')
-const Notification = require('../models/notification')
+const createNotification = require('../services/notification.service')
 
 module.exports = {
   getPosts: async (req, res) => {
@@ -16,13 +16,17 @@ module.exports = {
           .status(500)
           .json({ msg: 'Internal Server Error', error: err.message })
       })
-    },
-    createPost: async (req, res) => {
-        const {title, content, isPublished} = req.body
-        const newPost = new Post({
-            title: title,
-            content: content,
-            isPublished: isPublished
-        })
-    }
+  },
+  createPost: (req, res) => {
+    const { title, content, isPublished } = req.body
+    const newPost = new Post({
+      title: title,
+      content: content,
+      isPublished: isPublished
+    })
+    newPost.save().then(savedPost => {
+      createNotification(savedPost, `${savedPost.title} have been created`)
+      res.status(200).json(savedPost)
+    })
+  }
 }
