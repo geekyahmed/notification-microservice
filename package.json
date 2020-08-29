@@ -1,0 +1,30 @@
+{
+  "name": "notification-service",
+  "version": "1.0.0",
+  "description": "a notification microservice built with nodejs",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express"
+  ],
+  "author": "Bankole Ahmed",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^7.4.2",
+    "mongodb": "^3.1.6",
+    "passport-local": "^1.0.0",
+    "mongoose": "^5.7.5",
+    "passport": "^0.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  }
+}
