@@ -13,12 +13,7 @@ const PostSchema = new Schema({
   views: {
     type: Number
   },
-  reacts: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'react'
-    }
-  ],
+
   isPublished: {
     type: Boolean,
     default: false
