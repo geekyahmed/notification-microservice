@@ -19,12 +19,6 @@ const PostSchema = new Schema({
       ref: 'react'
     }
   ],
-  comments: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'comment'
-    }
-  ],
   isPublished: {
     type: Boolean,
     default: false

@@ -10,6 +10,7 @@ const options = {
   reconnectTries: 60,
   reconnectInterval: 1000,
   poolSize: 10,
+  useFindAndModify: false,
   bufferMaxEntries: 0 // If not connected, return errors immediately rather than waiting for reconnect
 }
 

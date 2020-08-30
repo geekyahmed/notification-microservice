@@ -17,11 +17,17 @@ module.exports = {
           .json({ msg: 'Internal Server Error', error: err.message })
       })
   },
-//     getSinglePost: async(req, res) => {
-//         const id = req.params.id
+  getSinglePost: async (req, res) => {
+    const id = req.params.id
 
-//       await Post.
-//   },
+    await Post.findOneAndUpdate(id, {
+      $inc: {
+        views: 1
+      }
+    }).then(singlePost => {
+      res.status(200).json(singlePost)
+    })
+  },
   createPost: (req, res) => {
     const { title, content, isPublished } = req.body
     const newPost = new Post({
