@@ -17,6 +17,11 @@ module.exports = {
           .json({ msg: 'Internal Server Error', error: err.message })
       })
   },
+//     getSinglePost: async(req, res) => {
+//         const id = req.params.id
+
+//       await Post.
+//   },
   createPost: (req, res) => {
     const { title, content, isPublished } = req.body
     const newPost = new Post({
@@ -44,6 +49,19 @@ module.exports = {
           )
           res.status(200).json(updatedPost)
         })
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ msg: 'Internal Server Error', error: err.message })
+      })
+  },
+  deletePost: async (req, res) => {
+    const id = req.params.id
+    await Post.findByIdAndDelete(id)
+      .then(deletedPost => {
+        createNotification(deletedPost, `${deletedPost.title} has been deleted`)
+        res.status(200).json({ msg: 'Deleted Successfully' })
       })
       .catch(err => {
         res
