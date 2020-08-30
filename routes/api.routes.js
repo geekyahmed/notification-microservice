@@ -4,6 +4,8 @@ const postController = require('../controllers/post.controller')
 
 router.get('/posts', postController.getPosts)
 
+router.get('/notifications', postController.getNotifications)
+
 router.get('/post/:id', postController.getSinglePost)
 
 router.post('/new', postController.createPost)

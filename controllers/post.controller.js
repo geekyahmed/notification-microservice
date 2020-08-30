@@ -1,5 +1,7 @@
 const Post = require('../models/post')
 const createNotification = require('../services/notification.service')
+const Notification = require('../models/notification')
+
 
 module.exports = {
   getPosts: async (req, res) => {
@@ -27,6 +29,12 @@ module.exports = {
     }).then(singlePost => {
       res.status(200).json(singlePost)
     })
+  },
+    getNotifications: async (req, res) => {
+      await Notification.find()
+        .then(notifications => {
+            return res.status(200).json(notifications)
+        })
   },
   createPost: (req, res) => {
     const { title, content, isPublished } = req.body
